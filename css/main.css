@@ -17,7 +17,8 @@ html {
 }
 
 hr {
-    border-color: rgb(46, 46, 82);
+    border-color: rgb(46, 46, 71);
+    width: 100%;
 }
 
 b {
