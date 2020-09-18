@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+html {
+    background: rgb(46, 46, 71);
+    color: rgb(204, 204, 204);
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.header {
+    font-size: 30px;
+    padding: 15px;
+    display: block;
+}
+
+.section {
+    background: rgb(58, 58, 78);
+    padding: 10px;
+}
+
+hr {
+    border-color: rgb(46, 46, 82);
+}
+
+b {
+    color: rgb(255, 255, 255);
+}
+
+.pref {
+    background: grey;
+    color: black;
+    padding: 10px;
+}
+
+a {
+    color: darkgray;
+}
