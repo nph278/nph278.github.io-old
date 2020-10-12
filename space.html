@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html style="transition: 1s;background: black;">
+
 <head>
 	<title></title>
 </head>
+
 <body>
-	<canvas id="canvas" width="1000" height="1000" style="transition: 1s;position: absolute;top: 0px;left: 0px;cursor: none;"></canvas><p style="user-select: none;">G to go to space</p>
+	<canvas id="canvas" width="1000" height="1000"
+		style="transition: 1s;position: absolute;top: 0px;left: 0px;cursor: none;"></canvas>
+	<p style="user-select: none;">G to go to space</p>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -17,189 +21,189 @@
 	right = false;
 	up = false;
 	down = false;
-	ball=[500,window.innerHeight-400,0,0];
-	ball2=[500,20,0,0];
-	ball3=[500,20,0,0];
-	ball4=[500,20,4,0];
-	ball5=[500,20,4,0];
-	ball6=[500,20,1,0];
+	ball = [500, window.innerHeight - 400, 0, 0];
+	ball2 = [500, 20, 0, 0];
+	ball3 = [500, 20, 0, 0];
+	ball4 = [500, 20, 4, 0];
+	ball5 = [500, 20, 4, 0];
+	ball6 = [500, 20, 1, 0];
 	gravity = true;
 	ctx = canvas.getContext("2d");
 	ctx.fillStyle = "white";
 	ctx.strokeStyle = "white";
-	setInterval(function() {
-		ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+	setInterval(function () {
+		ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 		ctx.beginPath();
-		ctx.moveTo(ball[0]+30,ball[1]);
-		ctx.arc(ball[0],ball[1],30,0,2*Math.PI);
+		ctx.moveTo(ball[0] + 30, ball[1]);
+		ctx.arc(ball[0], ball[1], 30, 0, 2 * Math.PI);
 		ctx.fill();
-		ball[0]+ball[2]<window.innerWidth-30&&ball[0]+ball[2]>0&&(ball[0]+=ball[2]); 
-		ball[1]+ball[3]<window.innerHeight-30&&ball[1]+ball[3]>0&&(ball[1]+=ball[3]);
-		
-		if(ball[2]>0&&gravity){
-			ball[2]/=1.03;
+		ball[0] + ball[2] < window.innerWidth - 30 && ball[0] + ball[2] > 0 && (ball[0] += ball[2]);
+		ball[1] + ball[3] < window.innerHeight - 30 && ball[1] + ball[3] > 0 && (ball[1] += ball[3]);
+
+		if (ball[2] > 0 && gravity) {
+			ball[2] /= 1.03;
 		}
-		if(ball[2]<0&&gravity){
-			ball[2]/=1.03;
+		if (ball[2] < 0 && gravity) {
+			ball[2] /= 1.03;
 		}
-		if(ball[3]>0&&gravity){
-			ball[3]/=1.03;
+		if (ball[3] > 0 && gravity) {
+			ball[3] /= 1.03;
 		}
-		if(ball[3]<0&&gravity){
-			ball[3]/=1.03;
+		if (ball[3] < 0 && gravity) {
+			ball[3] /= 1.03;
 		}
-		ctx.lineWidth=40;
+		ctx.lineWidth = 40;
 		ctx.beginPath();
-		ctx.moveTo(ball[0],ball[1]);
-		ctx.lineTo(ball2[0],ball2[1]);
+		ctx.moveTo(ball[0], ball[1]);
+		ctx.lineTo(ball2[0], ball2[1]);
 		ctx.stroke();
 		ctx.beginPath();
-		ctx.moveTo(ball2[0]+20,ball2[1]);
-		ctx.arc(ball2[0],ball2[1],20,0,2*Math.PI);
+		ctx.moveTo(ball2[0] + 20, ball2[1]);
+		ctx.arc(ball2[0], ball2[1], 20, 0, 2 * Math.PI);
 		ctx.fill();
-		ctx.lineWidth=10;
-		ball2[0]+ball2[2]<window.innerWidth-30&&ball2[0]+ball2[2]>0&&(ball2[0]+=ball2[2]);
-		ball2[1]+ball2[3]<window.innerHeight-30&&ball2[1]+ball2[3]>0&&(ball2[1]+=ball2[3]);
-		if(gravity){
-			ball2[3]+=grav;
+		ctx.lineWidth = 10;
+		ball2[0] + ball2[2] < window.innerWidth - 30 && ball2[0] + ball2[2] > 0 && (ball2[0] += ball2[2]);
+		ball2[1] + ball2[3] < window.innerHeight - 30 && ball2[1] + ball2[3] > 0 && (ball2[1] += ball2[3]);
+		if (gravity) {
+			ball2[3] += grav;
 		}
-		
-		if (Math.sqrt((ball2[0]-ball[0])*(ball2[0]-ball[0])+(ball2[1]-ball[1])*(ball2[1]-ball[1]))>100) {
-			ball2[0]>ball[0]?ball2[2]-=2:ball2[2]+=2;
-			ball2[1]>ball[1]?ball2[3]-=2:ball2[3]+=2;
+
+		if (Math.sqrt((ball2[0] - ball[0]) * (ball2[0] - ball[0]) + (ball2[1] - ball[1]) * (ball2[1] - ball[1])) > 100) {
+			ball2[0] > ball[0] ? ball2[2] -= 2 : ball2[2] += 2;
+			ball2[1] > ball[1] ? ball2[3] -= 2 : ball2[3] += 2;
 		}
-		if(ball2[2]>0&&gravity){
-			ball2[2]/=1.02;
+		if (ball2[2] > 0 && gravity) {
+			ball2[2] /= 1.02;
 		}
-		if(ball2[2]<0&&gravity){
-			ball2[2]/=1.02;
+		if (ball2[2] < 0 && gravity) {
+			ball2[2] /= 1.02;
 		}
-		if(ball2[3]>0&&gravity){
-			ball2[3]/=1.02;
+		if (ball2[3] > 0 && gravity) {
+			ball2[3] /= 1.02;
 		}
-		if(ball2[3]<0&&gravity){
-			ball2[3]/=1.02;
+		if (ball2[3] < 0 && gravity) {
+			ball2[3] /= 1.02;
 		}
 		ctx.beginPath();
-		ctx.moveTo(ball2[0],ball2[1]);
-		ctx.lineTo(ball3[0],ball3[1]);
+		ctx.moveTo(ball2[0], ball2[1]);
+		ctx.lineTo(ball3[0], ball3[1]);
 		ctx.stroke();
 		ctx.beginPath();
-		ctx.moveTo(ball3[0]+10,ball3[1]);
-		ctx.arc(ball3[0],ball3[1],10,0,2*Math.PI);
+		ctx.moveTo(ball3[0] + 10, ball3[1]);
+		ctx.arc(ball3[0], ball3[1], 10, 0, 2 * Math.PI);
 		ctx.fill();
-		ball3[0]+ball3[2]<window.innerWidth-30&&ball3[0]+ball3[2]>0&&(ball3[0]+=ball3[2]);
-		ball3[1]+ball3[3]<window.innerHeight-30&&ball3[1]+ball3[3]>0&&(ball3[1]+=ball3[3]);
-		if(gravity){
-			ball3[3]+=grav*3;
+		ball3[0] + ball3[2] < window.innerWidth - 30 && ball3[0] + ball3[2] > 0 && (ball3[0] += ball3[2]);
+		ball3[1] + ball3[3] < window.innerHeight - 30 && ball3[1] + ball3[3] > 0 && (ball3[1] += ball3[3]);
+		if (gravity) {
+			ball3[3] += grav * 3;
 		}
-		
-		if (Math.sqrt((ball3[0]-ball2[0])*(ball3[0]-ball2[0])+(ball3[1]-ball2[1])*(ball3[1]-ball2[1]))>100) {
-			ball3[0]>ball2[0]?ball3[2]-=2:ball3[2]+=2;
-			ball3[1]>ball2[1]?ball3[3]-=2:ball3[3]+=2;
+
+		if (Math.sqrt((ball3[0] - ball2[0]) * (ball3[0] - ball2[0]) + (ball3[1] - ball2[1]) * (ball3[1] - ball2[1])) > 100) {
+			ball3[0] > ball2[0] ? ball3[2] -= 2 : ball3[2] += 2;
+			ball3[1] > ball2[1] ? ball3[3] -= 2 : ball3[3] += 2;
 		}
-		if(ball3[2]>0&&gravity){
-			ball3[2]/=1.06;
+		if (ball3[2] > 0 && gravity) {
+			ball3[2] /= 1.06;
 		}
-		if(ball3[2]<0&&gravity){
-			ball3[2]/=1.06;
+		if (ball3[2] < 0 && gravity) {
+			ball3[2] /= 1.06;
 		}
-		if(ball3[3]>0&&gravity){
-			ball3[3]/=1.06;
+		if (ball3[3] > 0 && gravity) {
+			ball3[3] /= 1.06;
 		}
-		if(ball3[3]<0&&gravity){
-			ball3[3]/=1.06;
+		if (ball3[3] < 0 && gravity) {
+			ball3[3] /= 1.06;
 		}
 		ctx.beginPath();
-		ctx.moveTo(ball2[0],ball2[1]);
-		ctx.lineTo(ball4[0]+50,ball4[1]);
+		ctx.moveTo(ball2[0], ball2[1]);
+		ctx.lineTo(ball4[0] + 50, ball4[1]);
 		ctx.stroke();
 		ctx.beginPath();
-		ctx.moveTo(ball4[0]+50,ball4[1]);
-		ctx.arc(ball4[0]+50,ball4[1],10,0,2*Math.PI);
+		ctx.moveTo(ball4[0] + 50, ball4[1]);
+		ctx.arc(ball4[0] + 50, ball4[1], 10, 0, 2 * Math.PI);
 		ctx.fill();
-		ball4[0]+ball4[2]<window.innerWidth-30&&ball4[0]+ball4[2]>0&&(ball4[0]+=ball4[2]);
-		ball4[1]+ball4[3]<window.innerHeight-30&&ball4[1]+ball4[3]>0&&(ball4[1]+=ball4[3]);
-		if(gravity){
-			ball4[3]+=grav*3;
+		ball4[0] + ball4[2] < window.innerWidth - 30 && ball4[0] + ball4[2] > 0 && (ball4[0] += ball4[2]);
+		ball4[1] + ball4[3] < window.innerHeight - 30 && ball4[1] + ball4[3] > 0 && (ball4[1] += ball4[3]);
+		if (gravity) {
+			ball4[3] += grav * 3;
 		}
-		
-		if (Math.sqrt((ball4[0]-ball2[0])*(ball4[0]-ball2[0])+(ball4[1]-ball2[1])*(ball4[1]-ball2[1]))>100) {
-			ball4[0]>ball2[0]?ball4[2]-=2:ball4[2]+=2;
-			ball4[1]>ball2[1]?ball4[3]-=2:ball4[3]+=2;
+
+		if (Math.sqrt((ball4[0] - ball2[0]) * (ball4[0] - ball2[0]) + (ball4[1] - ball2[1]) * (ball4[1] - ball2[1])) > 100) {
+			ball4[0] > ball2[0] ? ball4[2] -= 2 : ball4[2] += 2;
+			ball4[1] > ball2[1] ? ball4[3] -= 2 : ball4[3] += 2;
 		}
-		if(ball4[2]>0&&gravity){
-			ball4[2]/=1.06;
+		if (ball4[2] > 0 && gravity) {
+			ball4[2] /= 1.06;
 		}
-		if(ball4[2]<0&&gravity){
-			ball4[2]/=1.06;
+		if (ball4[2] < 0 && gravity) {
+			ball4[2] /= 1.06;
 		}
-		if(ball4[3]>0&&gravity){
-			ball4[3]/=1.06;
+		if (ball4[3] > 0 && gravity) {
+			ball4[3] /= 1.06;
 		}
-		if(ball4[3]<0&&gravity){
-			ball4[3]/=1.06;
+		if (ball4[3] < 0 && gravity) {
+			ball4[3] /= 1.06;
 		}
 
 		ctx.beginPath();
-		ctx.moveTo(ball[0],ball[1]);
-		ctx.lineTo(ball5[0],ball5[1]);
+		ctx.moveTo(ball[0], ball[1]);
+		ctx.lineTo(ball5[0], ball5[1]);
 		ctx.stroke();
 		ctx.beginPath();
-		ctx.moveTo(ball5[0]+10,ball5[1]);
-		ctx.arc(ball5[0],ball5[1],10,0,2*Math.PI);
+		ctx.moveTo(ball5[0] + 10, ball5[1]);
+		ctx.arc(ball5[0], ball5[1], 10, 0, 2 * Math.PI);
 		ctx.fill();
-		ball5[0]+ball5[2]<window.innerWidth-30&&ball5[0]+ball5[2]>0&&(ball5[0]+=ball5[2]);
-		ball5[1]+ball5[3]<window.innerHeight-30&&ball5[1]+ball5[3]>0&&(ball5[1]+=ball5[3]);
-		if(gravity){
-			ball5[3]+=grav;
+		ball5[0] + ball5[2] < window.innerWidth - 30 && ball5[0] + ball5[2] > 0 && (ball5[0] += ball5[2]);
+		ball5[1] + ball5[3] < window.innerHeight - 30 && ball5[1] + ball5[3] > 0 && (ball5[1] += ball5[3]);
+		if (gravity) {
+			ball5[3] += grav;
 		}
-		
-		if (Math.sqrt((ball5[0]-ball[0])*(ball5[0]-ball[0])+(ball5[1]-ball[1])*(ball5[1]-ball[1]))>100) {
-			ball5[0]>ball[0]?ball5[2]-=2:ball5[2]+=2;
-			ball5[1]>ball[1]?ball5[3]-=2:ball5[3]+=2;
+
+		if (Math.sqrt((ball5[0] - ball[0]) * (ball5[0] - ball[0]) + (ball5[1] - ball[1]) * (ball5[1] - ball[1])) > 100) {
+			ball5[0] > ball[0] ? ball5[2] -= 2 : ball5[2] += 2;
+			ball5[1] > ball[1] ? ball5[3] -= 2 : ball5[3] += 2;
 		}
-		if(ball5[2]>0&&gravity){
-			ball5[2]/=1.01;
+		if (ball5[2] > 0 && gravity) {
+			ball5[2] /= 1.01;
 		}
-		if(ball5[2]<0&&gravity){
-			ball5[2]/=1.01;
+		if (ball5[2] < 0 && gravity) {
+			ball5[2] /= 1.01;
 		}
-		if(ball5[3]>0&&gravity){
-			ball5[3]/=1.01;
+		if (ball5[3] > 0 && gravity) {
+			ball5[3] /= 1.01;
 		}
-		if(ball5[3]<0&&gravity){
-			ball5[3]/=1.01;
+		if (ball5[3] < 0 && gravity) {
+			ball5[3] /= 1.01;
 		}
 		ctx.beginPath();
-		ctx.moveTo(ball[0],ball[1]);
-		ctx.lineTo(ball6[0],ball6[1]);
+		ctx.moveTo(ball[0], ball[1]);
+		ctx.lineTo(ball6[0], ball6[1]);
 		ctx.stroke();
 		ctx.beginPath();
-		ctx.moveTo(ball6[0]+10,ball6[1]);
-		ctx.arc(ball6[0],ball6[1],10,0,2*Math.PI);
+		ctx.moveTo(ball6[0] + 10, ball6[1]);
+		ctx.arc(ball6[0], ball6[1], 10, 0, 2 * Math.PI);
 		ctx.fill();
-		ball6[0]+ball6[2]<window.innerWidth-30&&ball6[0]+ball6[2]>0&&(ball6[0]+=ball6[2]);
-		ball6[1]+ball6[3]<window.innerHeight-30&&ball6[1]+ball6[3]>0&&(ball6[1]+=ball6[3]);
-		if(gravity){
-			ball6[3]+=grav;
+		ball6[0] + ball6[2] < window.innerWidth - 30 && ball6[0] + ball6[2] > 0 && (ball6[0] += ball6[2]);
+		ball6[1] + ball6[3] < window.innerHeight - 30 && ball6[1] + ball6[3] > 0 && (ball6[1] += ball6[3]);
+		if (gravity) {
+			ball6[3] += grav;
 		}
-		
-		if (Math.sqrt((ball6[0]-ball[0])*(ball6[0]-ball[0])+(ball6[1]-ball[1])*(ball6[1]-ball[1]))>100) {
-			ball6[0]>ball[0]?ball6[2]-=2:ball6[2]+=2;
-			ball6[1]>ball[1]?ball6[3]-=2:ball6[3]+=2;
+
+		if (Math.sqrt((ball6[0] - ball[0]) * (ball6[0] - ball[0]) + (ball6[1] - ball[1]) * (ball6[1] - ball[1])) > 100) {
+			ball6[0] > ball[0] ? ball6[2] -= 2 : ball6[2] += 2;
+			ball6[1] > ball[1] ? ball6[3] -= 2 : ball6[3] += 2;
 		}
-		if(ball6[2]>0&&gravity){
-			ball6[2]/=1.01;
+		if (ball6[2] > 0 && gravity) {
+			ball6[2] /= 1.01;
 		}
-		if(ball6[2]<0&&gravity){
-			ball6[2]/=1.01;
+		if (ball6[2] < 0 && gravity) {
+			ball6[2] /= 1.01;
 		}
-		if(ball6[3]>0&&gravity){
-			ball6[3]/=1.01;
+		if (ball6[3] > 0 && gravity) {
+			ball6[3] /= 1.01;
 		}
-		if(ball6[3]<0&&gravity){
-			ball6[3]/=1.01;
+		if (ball6[3] < 0 && gravity) {
+			ball6[3] /= 1.01;
 		}
 		if (left) {
 			ball[2]--;
@@ -214,7 +218,8 @@
 			ball3[2]++;
 			ball4[2]++;
 			ball5[2]++;
-			ball6[2]++;}
+			ball6[2]++;
+		}
 		if (up) {
 			ball[3]--;
 			ball3[3]--;
@@ -232,46 +237,47 @@
 		}
 		ctx.fillStyle = "black";
 		ctx.beginPath();
-		ctx.moveTo(ball[0]+10,ball[1]);
-		ctx.arc(ball[0],ball[1],10,0,2*Math.PI);
+		ctx.moveTo(ball[0] + 10, ball[1]);
+		ctx.arc(ball[0], ball[1], 10, 0, 2 * Math.PI);
 		ctx.fill();
 		ctx.fillStyle = "white";
-	},10);
+	}, 10);
 
-	$("html").keydown(function(event) {
-		if (event.key==="=") {
+	$("html").keydown(function (event) {
+		if (event.key === "=") {
 			grav++;
 		}
-		if (event.key==="-") {
+		if (event.key === "-") {
 			grav--;
 		}
-		if (event.key==="ArrowRight") {
+		if (event.key === "ArrowRight") {
 			right = true;
 		}
-		if (event.key==="ArrowLeft") {
+		if (event.key === "ArrowLeft") {
 			left = true;
 		}
-		if (event.key==="ArrowUp") {
+		if (event.key === "ArrowUp") {
 			up = true;
 		}
-		if (event.key==="ArrowDown") {
+		if (event.key === "ArrowDown") {
 			down = true;
 		}
 	});
-	$("html").keyup(function(event) {
-		if (event.key==="ArrowRight") {
+	$("html").keyup(function (event) {
+		if (event.key === "ArrowRight") {
 			right = false;
 		}
-		if (event.key==="ArrowLeft") {
+		if (event.key === "ArrowLeft") {
 			left = false;
 		}
-		if (event.key==="ArrowUp") {
+		if (event.key === "ArrowUp") {
 			up = false;
 		}
-		if (event.key==="ArrowDown") {
+		if (event.key === "ArrowDown") {
 			down = false;
 		}
 	});
 
 </script>
+
 </html>
