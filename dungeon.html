@@ -100,7 +100,6 @@
 
 	var wod = new WODWorld("startroom");
 
-	//
 	wod.addRoom("startroom", { "1": "trail1", "2": "minigame1" }, "%Welcome back,} @you.}^^^^^^You are in a small clearing in a forest.^There is a path to the east.^^{[1]} Go east^{[2]} Dig a hole");
 	wod.addRoom("minigame1", { "1": "startroom", "2": ";if(Math.random()<.25){document.body.innerHTML='SEGFAULT';setTimeout(function(){setInterval(function(){var a='';for(var i=0;i<40000;i++){a+=String.fromCharCode(0x2580 + Math.random() * (0x259F-0x2580+1))};document.body.innerHTML=a},1)},500);}else{window.world.moveTo('minigame1')}" }, "Welcome to the dig-a-hole minigame!^How far can you dig before getting crushed by the pressure?^^Let's find out...^^{[1]} Leave hole^{[2]} Dig deeper");
 	wod.addRoom("trail1", { "1": "trail2", "2": "startroom", "3": "cave1" }, "You are on a large trail in a forest.^There is a small cave nearby.^^{[1]} Continue east^{[2]} Continue west^{[3]} Enter cave");
