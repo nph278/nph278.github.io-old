@@ -5,16 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Witernia</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
 </head>
 
 <body>
+    <nav><span id="title">Home</span> - $<span id="money">10</span></nav>
 
+    <p id="msg">You find $10 in your house.</p>
+    <br>
+
+    <section id="home" class="btn-wrap">
+        <div onclick="room('school')" class="btn" id="schoolbtn">Go to school</div><br>
+    </section>
+
+    <section id="school" class="btn-wrap">
+        <div onclick="room('shop')" class="btn">Go to shop</div><br>
+        <div onclick="room('groc')" class="btn">Go to grocery store</div><br>
+    </section>
+
+    <section id="work" class="btn-wrap">
+        <div onclick="room('shop')" class="btn">Go to shop</div><br>
+        <div onclick="room('groc')" class="btn">Go to grocery store</div><br>
+    </section>
+
+    <section id="shop" class="btn-wrap">
+        <div onclick="room('buy-coal')" class="btn">Buy coal - $4</div><br>
+        <div onclick="room('buy-furn')" class="btn">Buy furnace - $20</div><br>
+        <div onclick="room('groc')" class="btn">Go to grocery store</div><br>
+        <div onclick="room('eat')" class="btn">Continue</div><br>
+        <div onclick="room('car')" class="btn" id="carelm"></div><br>
+    </section>
+
+    <section id="groc" class="btn-wrap">
+        <div onclick="room('buy-fish')" class="btn">Buy raw fish - $5</div><br>
+        <div onclick="room('buy-rice')" class="btn">Buy rice - $2</div><br>
+        <div onclick="room('shop')" class="btn">Go to shop</div><br>
+        <div onclick="room('eat')" class="btn">Continue</div><br>
+    </section>
+
+    <section id="eat" class="btn-wrap">
+        <div onclick="room('eat-fish')" class="btn">Cook and eat fish - Good for three days</div><br>
+        <div onclick="room('eat-rice')" class="btn">Eat rice - Good for one day</div><br>
+        <div onclick="room('home');starve--;if (!starve) {room('end');}" class="btn">Go home</div><br>
+        <div onclick="room('car2')" class="btn" id="carelm2">Assemble car - $5</div><br>
+    </section>
+
+    <section id="end" class="btn-wrap">
+        <div onclick="window.open(document.URL,'_Self')" class="btn">Try again...</div><br>
+    </section>
+
+    <section id="win" class="btn-wrap">
+    </section>
 </body>
-<script>
-
-</script>
 
 </html>
