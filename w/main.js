@@ -44,6 +44,7 @@ function room(a) {
         case 'shop':
             carelm.innerHTML = "Buy car part: "+carparts[0]+" - $1";
             carelm.style.display = chance ? "block" : "none";
+            chance = false;
             title.innerHTML = "Shop";
             msg.innerHTML = "The customer is always right.";
             actualRoom("shop");
