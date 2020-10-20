@@ -68,6 +68,7 @@
 	gateopenSave = false;
 	shelfdownSave = false;
 	hatSave = false;
+	g2Save = false;
 
 	function save() {
 		frag1Save = frag1;
@@ -82,6 +83,7 @@
 		gateopenSave = gateopen;
 		shelfdownSave = shelfdown;
 		hatSave = hat;
+		g2Save = g2;
 		roomSave = wod.current;
 	}
 
@@ -143,7 +145,7 @@
 	wod.addRoom("cave3", { "1": "cave1", "5": "xtrasnack" }, "This is a @DEAD-END}.^^{[1]} Exit north");
 	wod.addRoom("xtrasnack", { "1": ";document.body.innerHTML='SEGFAULT';setTimeout(function(){setInterval(function(){var a='';for(var i=0;i<40000;i++){a+=String.fromCharCode(0x2580 + Math.random() * (0x259F-0x2580+1))};document.body.innerHTML=a},1)},500);" }, "This is #xTrasnaCK sHop}.^Buy something %IMMEDIATELY} or leave.^^uuddlrlrbas^^{[1]} Exit shop");
 	wod.addRoom("trail2", { "1": "trail1", "2": ";if(hat){window.world.moveTo('town2')}else{window.world.moveTo('town')}", "3": "gate" }, "You are on a large trail through the forest.^^{[1]} Continue west^{[2]} Continue north^{[3]} Continue south");
-	wod.addRoom("gate", { "1": "trail2", "2": ";if(gateopen){window.world.moveTo('mansionyard2');save()} else if(key){window.world.moveTo('gatetransition')}else{window.world.moveTo('gate_lock')}", "3": "minigame2" }, "You are on a large trail through the forest.^There is a gate to the south.^^{[1]} Continue north^{[2]} Open gate^{[3]} Climb gate");
+	wod.addRoom("gate", { "1": "trail2", "2": ";if(gateopen){window.world.moveTo('mansionyard2')} else if(key){window.world.moveTo('gatetransition')}else{window.world.moveTo('gate_lock')}", "3": "minigame2" }, "You are on a large trail through the forest.^There is a gate to the south.^^{[1]} Continue north^{[2]} Open gate^{[3]} Climb gate");
 	wod.addRoom("gate_lock", { "1": "gate" }, "It's no use, that gate is locked.^^{[1]} Continue");
 	wod.addRoom("minigame2", { "1": "gate", "2": ";if(Math.random()<.25){document.body.innerHTML='SEGFAULT';setTimeout(function(){setInterval(function(){var a='';for(var i=0;i<40000;i++){a+=String.fromCharCode(0x2580 + Math.random() * (0x259F-0x2580+1))};document.body.innerHTML=a},1)},500);}else{window.world.moveTo('minigame2')}" }, "Welcome to the climb-a-gate minigame!^How far can you get before falling down and breaking your back?^^Let's find out...^^{[1]} Give up^{[2]} Try again");
 	wod.addRoom("town", { "1": "trail2", "2": "town_tinyman", "3": "town_thug" }, "You appear to be in a small village.^There is a trail leading south.^There are many people around you, including a @tiny man} and a %large thuggish person}.^^{[1]} Continue south^{[2]} Talk to @tiny man}^{[3]} Talk to %thug}");
@@ -151,9 +153,9 @@
 	wod.addRoom("town_death", { "1": ";retry()" }, "You say &\"Let's fight.\"}^^..^^He immideatly punches you in the gut, and you fall to the floor.^^{[1]} Retry");
 	wod.addRoom("town_tinyman", { "1": ";hat =true;window.world.moveTo('town2')" }, "You approach the tiny man to talk to him, but he gets severely spooked.^He runs away, leaving behind him a #hat}.^You put on the #hat}.^^{[1]} Continue");
 	wod.addRoom("town2", { "1": "trail2", "2": "town_thug" }, "You appear to be in a small village.^There is a trail leading south.^There are many people around you, including a %large thuggish person}.^^{[1]} Continue south^{[2]} Talk to %thug}");
-	wod.addRoom("gatetransition", { "1": ";gateopen =true;window.world.moveTo('mansionyard2');save()" }, "You unlocked the shinky gate with your #key}, and it swung open.^^{[1]} Continue}");
+	wod.addRoom("gatetransition", { "1": ";gateopen =true;window.world.moveTo('mansionyard2')" }, "You unlocked the shinky gate with your #key}, and it swung open.^^{[1]} Continue}");
 	wod.addRoom("mansionyard", { "1": "gate", "2": "mansion1" }, "You are in the yard of a large mansion. ^There is a gate to the north.^^{[1]} Open gate^{[2]} Enter mansion");
-	wod.addRoom("mansionyard2", { "1": "gate", "2": "mansion1" }, "You are in the yard of a large mansion. ^There is a gate to the north.^^{[1]} Open gate^{[2]} Enter mansion^^&[ Your progress has been saved. ]}");
+	wod.addRoom("mansionyard2", { "1": "gate", "2": "mansion1" }, "You are in the yard of a large mansion. ^There is a gate to the north.^^{[1]} Open gate^{[2]} Enter mansion}");
 	wod.addRoom("mansion1", { "1": "mansion2", "2": ";if(frag2){window.world.moveTo('mansion4')} else {window.world.moveTo('mansion3')}", "3": ";if(shelfdown){window.world.moveTo('attic2')} else if(hat){window.world.moveTo('attic')}else{window.world.moveTo('attic_death')}", "4": "mansionyard" }, "You are in a large mansion. ^There are passages to the east and west, and a staircase leading upwards.^There is a door to the ouside.^^{[1]} Go east^{[2]} Go west^{[3]} Go up stairs^{[4]} Exit mansion");
 	wod.addRoom("mansion2", { "1": "mansion1" }, "You are in a large mansion.^There is a huge clock on the wall. It reads &\"Mansion creation date: " + (new Date()).getTime() + "\"}.^There is a passage to the west.^^{[1]} Go west");
 	wod.addRoom("attic_death", { "1": ";retry()" }, "You step into the attic, but you stomp slightly too hard!^A shelf comes tumbling down onto your head.^^sad^^{[1]} Retry^^^If only you had some head protection...");
@@ -173,9 +175,10 @@
 	wod.addRoom("sg_key", { "1": "sg_jump", "2": "sg_duck", "3": "sg_key2", "4": "sg_nothing" }, "You strike the head of the %security gaurd}, giving them a nasty scar.^They prepare to strike...^^{[1]} Jump!^{[2]} Duck!^{[3]} Attack again with #key}^{[4]} Do nothing");
 	wod.addRoom("sg_duck", { "1": ";retry()" }, "You duck!^...^Sadly, they were aiming for your foot.^You fall to the floor.^^{[1]} Retry");
 	wod.addRoom("sg_key2", { "1": ";retry()" }, "Before you can strike again, your ribcage has been shattered by the crowbar.^^{[1]} Retry");
-	wod.addRoom("sg_jump", { "1": "transition1" }, "You jump over the %security gaurd}'s attack.^You fall onto the forehead of the %security gaurd}, and crush them.^^{[1]} Continue");
-	wod.addRoom("transition1", { "1": "secondworld" }, "While you were fighting with your tiny key, the machine finished!^It appeared to create a @door}.^^{[1]} Walk through door^^^There are strange things happening all around you.");
-	wod.addRoom("secondworld", { "1": "staircase", "2": "intersection" }, "%Tee hee...}^^...^^You are in a large underground room.^There is a hole in the wall in the shape of a @door}.^There are passages to the north and south.^^{[1]} Go north^{[2]} Go south");
+	wod.addRoom("sg_jump", { "1": ";window.world.moveTo('transition1');save()" }, "You jump over the %security gaurd}'s attack.^You fall onto the forehead of the %security gaurd}, and crush them.^^{[1]} Continue");
+	wod.addRoom("transition1", { "1": ";window.world.moveTo('secondworld');save()" }, "While you were fighting with your tiny key, the machine finished!^It appeared to create a @door}.^^{[1]} Walk through door^^^There are strange things happening all around you.^&[ Your progress has been saved ]}");
+
+	wod.addRoom("secondworld", { "1": "staircase", "2": ";if(g2){window.world.moveTo('intersection')} else {window.world.moveTo('gaurd2')}" }, "%Tee hee...}^^...^^You are in a large underground room.^There is a hole in the wall in the shape of a @door}.^There are passages to the north and south.^^{[1]} Go north^{[2]} Go south");
 	wod.addRoom("staircase", { "1": ";if(rib){window.world.moveTo('dungeon1')} else {window.world.moveTo('skeleton')}", "2": "secondworld" }, "You are in a small underground room.^You hear slouching and clinking %below you.}^^^{[1]} Go down^{[2]} Go south");
 	wod.addRoom("skeleton", { "1": "skeleton_fight", "2": "staircase" }, "You step down the staircase, and notice a %skeleton} slouching around!^It appears to notice you too!^^{[1]} Fight! ^{[2]} Run!");
 	wod.addRoom("skeleton_fight", { "1": "skeleton_nothing", "2": "skeleton_head", "3": "skeleton_foot" }, "The %skeleton} tears of it's feet, and prepares to throw them at you!^^{[1]} Do nothing ^{[2]} Go for the head^{[3]} Go for the foot");
@@ -183,10 +186,12 @@
 	wod.addRoom("skeleton_foot", { "1": ";retry()" }, "%YOU IDIOT!}^It has no feet!^The feet are now lodged in your stomach.^^{[1]} Retry");
 	wod.addRoom("skeleton_head", { "1": ";rib=true;window.world.moveTo('dungeon1')" }, "You shatter the skull of the %skeleton}.^You realize one of it's #ribs} is made of silver.^ You pick it up.^^{[1]} Continue");
 	wod.addRoom("dungeon1", { "1": "staircase" }, "You are in a small @dungeon}.^There is a skeleton on the floor and an ascending staircase.^^{[1]} Go up");
-	wod.addRoom("intersection", {}, "Welcome back1!!");
+	wod.addRoom("gaurd2", { "1": "gaurd2_death", "2": ";if(rib){window.world.moveTo('gaurd2_win')} else {window.world.moveTo('gaurd2_key')}" }, "A armored %gaurd} blocks the way!^^&\"What are you doing here?\"}^^{[1]} Run^{[2]} Fight");
+	wod.addRoom("gaurd2_death", { "1": ";retry()" }, "You fail to outrun the %gaurd}!^^Snicker-Snack! You were sliced into pieces.^^{[1]} Retry");
+	wod.addRoom("gaurd2_key", { "1": "gaurd2_death" }, "Your key shatters when it hits the %gaurd}'s armor'.^^{[1]} Run");
+	wod.addRoom("gaurd2_win", { "1": "intersection" }, "The gaurd gets hit by the silver #rib}, and falls to the floor.^^{[1]} Continue");
+	wod.addRoom("intersection", {}, "&[ This is currently the end of World of Dungeons. ]}");
 
-
-	//intersectio
 
 	function retry() {
 		frag1 = frag1Save;
@@ -201,6 +206,7 @@
 		gateopen = gateopenSave;
 		shelfdown = shelfdownSave;
 		hat = hatSave;
+		g2 = g2Save;
 		wod.moveTo(roomSave);
 	}
 	retry();
