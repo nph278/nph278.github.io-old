@@ -54,6 +54,37 @@
 
 	//    WOD
 
+	roomSave = "startroom"
+
+	frag1Save = false;
+	frag2Save = false;
+	ribSave = false;
+	currcodeSave = "";
+	codeSave = "21795621";
+	iterSave = 0;
+	screenSave = "";
+	readySave = false;
+	keySave = false;
+	gateopenSave = false;
+	shelfdownSave = false;
+	hatSave = false;
+
+	function save() {
+		frag1Save = frag1;
+		frag2Save = frag2;
+		ribSave = rib;
+		currcodeSave = currcode;
+		codeSave = code;
+		iterSave = iter;
+		screenSave = screen;
+		readySave = ready;
+		keySave = key;
+		gateopenSave = gateopen;
+		shelfdownSave = shelfdown;
+		hatSave = hat;
+		roomSave = wod.current;
+	}
+
 	function WODRoom(i, m) {
 		this.int = i;
 		this.msg = m;
@@ -112,7 +143,7 @@
 	wod.addRoom("cave3", { "1": "cave1", "5": "xtrasnack" }, "This is a @DEAD-END}.^^{[1]} Exit north");
 	wod.addRoom("xtrasnack", { "1": ";document.body.innerHTML='SEGFAULT';setTimeout(function(){setInterval(function(){var a='';for(var i=0;i<40000;i++){a+=String.fromCharCode(0x2580 + Math.random() * (0x259F-0x2580+1))};document.body.innerHTML=a},1)},500);" }, "This is #xTrasnaCK sHop}.^Buy something %IMMEDIATELY} or leave.^^uuddlrlrbas^^{[1]} Exit shop");
 	wod.addRoom("trail2", { "1": "trail1", "2": ";if(hat){window.world.moveTo('town2')}else{window.world.moveTo('town')}", "3": "gate" }, "You are on a large trail through the forest.^^{[1]} Continue west^{[2]} Continue north^{[3]} Continue south");
-	wod.addRoom("gate", { "1": "trail2", "2": ";if(gateopen){window.world.moveTo('mansionyard')} else if(key){window.world.moveTo('gatetransition')}else{window.world.moveTo('gate_lock')}", "3": "minigame2" }, "You are on a large trail through the forest.^There is a gate to the south.^^{[1]} Continue north^{[2]} Open gate^{[3]} Climb gate");
+	wod.addRoom("gate", { "1": "trail2", "2": ";if(gateopen){window.world.moveTo('mansionyard2');save()} else if(key){window.world.moveTo('gatetransition')}else{window.world.moveTo('gate_lock')}", "3": "minigame2" }, "You are on a large trail through the forest.^There is a gate to the south.^^{[1]} Continue north^{[2]} Open gate^{[3]} Climb gate");
 	wod.addRoom("gate_lock", { "1": "gate" }, "It's no use, that gate is locked.^^{[1]} Continue");
 	wod.addRoom("minigame2", { "1": "gate", "2": ";if(Math.random()<.25){document.body.innerHTML='SEGFAULT';setTimeout(function(){setInterval(function(){var a='';for(var i=0;i<40000;i++){a+=String.fromCharCode(0x2580 + Math.random() * (0x259F-0x2580+1))};document.body.innerHTML=a},1)},500);}else{window.world.moveTo('minigame2')}" }, "Welcome to the climb-a-gate minigame!^How far can you get before falling down and breaking your back?^^Let's find out...^^{[1]} Give up^{[2]} Try again");
 	wod.addRoom("town", { "1": "trail2", "2": "town_tinyman", "3": "town_thug" }, "You appear to be in a small village.^There is a trail leading south.^There are many people around you, including a @tiny man} and a %large thuggish person}.^^{[1]} Continue south^{[2]} Talk to @tiny man}^{[3]} Talk to %thug}");
@@ -120,8 +151,9 @@
 	wod.addRoom("town_death", { "1": ";retry()" }, "You say &\"Let's fight.\"}^^..^^He immideatly punches you in the gut, and you fall to the floor.^^{[1]} Retry");
 	wod.addRoom("town_tinyman", { "1": ";hat =true;window.world.moveTo('town2')" }, "You approach the tiny man to talk to him, but he gets severely spooked.^He runs away, leaving behind him a #hat}.^You put on the #hat}.^^{[1]} Continue");
 	wod.addRoom("town2", { "1": "trail2", "2": "town_thug" }, "You appear to be in a small village.^There is a trail leading south.^There are many people around you, including a %large thuggish person}.^^{[1]} Continue south^{[2]} Talk to %thug}");
-	wod.addRoom("gatetransition", { "1": ";gateopen =true;window.world.moveTo('mansionyard')" }, "You unlocked the shinky gate with your #key}, and it swung open.^^{[1]} Continue");
+	wod.addRoom("gatetransition", { "1": ";gateopen =true;window.world.moveTo('mansionyard2');save()" }, "You unlocked the shinky gate with your #key}, and it swung open.^^{[1]} Continue}");
 	wod.addRoom("mansionyard", { "1": "gate", "2": "mansion1" }, "You are in the yard of a large mansion. ^There is a gate to the north.^^{[1]} Open gate^{[2]} Enter mansion");
+	wod.addRoom("mansionyard2", { "1": "gate", "2": "mansion1" }, "You are in the yard of a large mansion. ^There is a gate to the north.^^{[1]} Open gate^{[2]} Enter mansion^^&[ Your progress has been saved. ]}");
 	wod.addRoom("mansion1", { "1": "mansion2", "2": ";if(frag2){window.world.moveTo('mansion4')} else {window.world.moveTo('mansion3')}", "3": ";if(shelfdown){window.world.moveTo('attic2')} else if(hat){window.world.moveTo('attic')}else{window.world.moveTo('attic_death')}", "4": "mansionyard" }, "You are in a large mansion. ^There are passages to the east and west, and a staircase leading upwards.^There is a door to the ouside.^^{[1]} Go east^{[2]} Go west^{[3]} Go up stairs^{[4]} Exit mansion");
 	wod.addRoom("mansion2", { "1": "mansion1" }, "You are in a large mansion.^There is a huge clock on the wall. It reads &\"Mansion creation date: " + (new Date()).getTime() + "\"}.^There is a passage to the west.^^{[1]} Go west");
 	wod.addRoom("attic_death", { "1": ";retry()" }, "You step into the attic, but you stomp slightly too hard!^A shelf comes tumbling down onto your head.^^sad^^{[1]} Retry^^^If only you had some head protection...");
@@ -157,19 +189,19 @@
 	//intersectio
 
 	function retry() {
-		frag1 = false;
-		frag2 = false;
-		rib = false;
-		currcode = "";
-		code = "21795621";
-		iter = 0;
-		screen = "";
-		ready = false;
-		key = false;
-		gateopen = false;
-		shelfdown = false;
-		hat = false;
-		wod.moveTo("startroom");
+		frag1 = frag1Save;
+		frag2 = frag2Save;
+		rib = ribSave;
+		currcode = currcodeSave;
+		code = codeSave;
+		iter = iterSave;
+		screen = screenSave;
+		ready = readySave;
+		key = keySave;
+		gateopen = gateopenSave;
+		shelfdown = shelfdownSave;
+		hat = hatSave;
+		wod.moveTo(roomSave);
 	}
 	retry();
 
