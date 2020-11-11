@@ -1,12 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
-@font-face {
-    font-family: "FontAwesome";
-    font-weight: normal;
-    font-style: normal;
-    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
-    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
-}
-
 html {
     background: rgb(46, 46, 71);
     color: rgb(204, 204, 204);
@@ -60,16 +52,19 @@ a:focus {
 }
 
 a[href^="https://github.com"]::before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Brands";
     content: "\f09b  ";
+    font-weight: 400;
 }
 
 a[href^="https://codegolf.stackexchange.com"]::before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Brands";
     content: "\f16c  ";
+    font-weight: 900;
 }
 
 a[href^="https://nph278.github.io"]::before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0c1  ";
+    font-weight: 900;
 }
