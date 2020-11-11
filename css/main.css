@@ -11,7 +11,7 @@ html {
     display: block;
 }
 
-.section {
+section {
     background: rgb(58, 58, 78);
     padding: 10px;
 }
@@ -21,16 +21,32 @@ hr {
     width: 100%;
 }
 
-b {
+strong {
     color: rgb(255, 255, 255);
 }
 
-.pref {
+code {
+    font-family: inherit;
     background: grey;
     color: black;
-    padding: 10px;
+    padding: 3px;
+    border-radius: 3px;
 }
 
 a {
     color: darkgray;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+}
+
+a:active {
+    color: white;
+}
+
+a:focus {
+    outline: none;
+    border-bottom: 1px solid;
 }
