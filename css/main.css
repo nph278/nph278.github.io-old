@@ -1,8 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+:root {
+    --bg: rgb(46, 46, 71);
+    --bg2: rgb(58, 58, 78);
+    --fg: rgb(204, 204, 204);
+}
+
 html {
-    background: rgb(46, 46, 71);
-    color: rgb(204, 204, 204);
+    background: var(--bg);
+    color: var(--fg);
     font-family: 'Ubuntu Mono', monospace;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-item {
+    width: 100%;
+    background-color: var(--bg2);
+    margin: 5px 5px 10px 5px;
+    text-align: center;
+    content: "hite";
+    font-size: 2em;
+    padding: 20px 0;
 }
 
 .header {
@@ -12,12 +32,12 @@ html {
 }
 
 section {
-    background: rgb(58, 58, 78);
+    background: var(--bg2);
     padding: 10px;
 }
 
 .seperator {
-    background-color: rgb(46, 46, 71);
+    background-color: var(--bg);
     height: 3px;
 }
 
@@ -67,6 +87,17 @@ a[href^="https://nph278.github.io"]::before {
     font-family: "Font Awesome 5 Free";
     content: "\f0c1  ";
     font-weight: 900;
+}
+
+.nav-item a[href^="https://nph278.github.io"]::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0e7  ";
+    font-weight: 900;
+}
+
+.nav-item a::before {
+    display: block;
+    font-size: 2em;
 }
 
 .editongit {
