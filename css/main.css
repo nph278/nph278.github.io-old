@@ -89,7 +89,7 @@ a[href^="https://nph278.github.io"]::before {
     font-weight: 900;
 }
 
-.newest a[href^="https://nph278.github.io"]::before {
+.newest a::before {
     font-family: "Font Awesome 5 Free";
     content: "\f0e7  ";
     font-weight: 900;
