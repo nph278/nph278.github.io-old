@@ -59,7 +59,7 @@ a {
     position: relative;
 }
 
-:not(.nav-item)>a::after {
+:not(.nav-item)>a:not(.game)::after {
     display: inline-block;
     content: '';
     position: absolute;
