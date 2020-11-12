@@ -56,19 +56,41 @@ code {
 a {
     color: darkgray;
     text-decoration: none;
+    position: relative;
 }
 
-a:hover {
-    border-bottom: 1px solid;
+:not(.nav-item)>a::after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transition: transform 150ms ease-in;
+}
+
+:not(.nav-item)>a:not(.editongit)::after {
+    transform-origin: left;
+}
+
+.editongit::after {
+    transform-origin: center;
+}
+
+:not(.nav-item)>a:hover::after, :not(.nav-item)>a:focus::after {
+    transform: scaleX(1);
 }
 
 a:active {
     color: white;
 }
 
-a:focus {
+.nav-item a:focus, .nav-item a:hover {
     outline: none;
-    border-bottom: 1px solid;
+    border-bottom: 3px solid;
 }
 
 a[href^="https://github.com"]::before {
@@ -104,4 +126,6 @@ a[href^="https://nph278.github.io"]::before {
     display: block;
     font-size: .75em;
     content: "(" attr(name) ")";
+    position: relative;
+    top: 3px;
 }
