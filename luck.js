@@ -3,6 +3,8 @@ let score = document.getElementById("score")
 let cash = document.getElementById("cash")
 let playersElm = Array.from(document.getElementsByClassName("player"))
 
+let autoint;
+
 const getRando = () => Math.floor(Math.random() * 13) + 1
 
 let oldNumber = 0
@@ -31,7 +33,7 @@ class Player {
     }
 }
 
-const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3"]
+const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3", "amazienge"]
 
 class CPU extends Player {
     constructor(name, style) {
@@ -100,6 +102,15 @@ class CPU extends Player {
                     this.betLo()
                 }
                 break;
+            case "amazienge":
+                if (this.cash > 6) {
+                    this.bank()
+                } else if (num < 7) {
+                    this.betHi()
+                } else {
+                    this.betLo()
+                }
+                break;
 
         }
     }
@@ -113,7 +124,8 @@ const players = [
     "Player D",
     "Player E",
     "Player F",
-    "Player G"
+    "Player G",
+    "Player H"
 ].map((name, i) => new CPU(name, cpuArr[i]))
 
 const sorter = (p1, p2) => {
@@ -129,7 +141,7 @@ const updateScreen = () => {
     cash.innerHTML = human.cash
     playersElm.forEach((elm, i) => {
         const plr = players.concat(human).sort(sorter)[i]
-        elm.innerHTML = `${plr.name}: ${plr.style || "human"} - ${plr.score} + ${plr.cash}`
+        elm.innerHTML = `${plr.style || "You"} - ${plr.score} + ${plr.cash}`
     })
 }
 
