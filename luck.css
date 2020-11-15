@@ -1,0 +1,36 @@
+html {
+    text-align: center;
+    user-select: none;
+    background-color: rgb(42, 41, 56);
+    font-family: monospace;
+}
+
+.mono {
+    font-size: 4rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 50px;
+    margin: 3px;
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+
+.btn--hi {
+    background-color: blue;
+    color: white;
+}
+
+.btn--lo {
+    background-color: yellow;
+}
+
+.btn--bank {
+    background-color: green;
+}
+
+.player {
+    font-size: 2rem;
+}
