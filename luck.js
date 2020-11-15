@@ -145,8 +145,8 @@ const sorter = (p1, p2) => {
 
 const updateScreen = () => {
     rando.innerHTML = number
-    score.innerHTML = human.score
-    cash.innerHTML = human.cash
+    score.innerHTML = `Current banked score:<br> ${human.score}`
+    cash.innerHTML = `Current cash:<br> ${human.cash}`
     playersElm.forEach((elm, i) => {
         const plr = players.concat(human).sort(sorter)[i]
         elm.innerHTML = `${plr.style || "You"} - ${plr.score} + ${plr.cash}`
