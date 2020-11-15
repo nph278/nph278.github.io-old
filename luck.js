@@ -33,7 +33,7 @@ class Player {
     }
 }
 
-const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3", "amazienge"]
+const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3", "amazienge", "terrible"]
 
 class CPU extends Player {
     constructor(name, style) {
@@ -111,6 +111,13 @@ class CPU extends Player {
                     this.betLo()
                 }
                 break;
+            case "terrible":
+                if (this.cash === 1) {
+                    this.bank()
+                } else {
+                    this.betHi()
+                }
+                break;
 
         }
     }
@@ -125,7 +132,8 @@ const players = [
     "Player E",
     "Player F",
     "Player G",
-    "Player H"
+    "Player H",
+    "Player I"
 ].map((name, i) => new CPU(name, cpuArr[i]))
 
 const sorter = (p1, p2) => {
