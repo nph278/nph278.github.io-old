@@ -33,7 +33,7 @@ class Player {
     }
 }
 
-const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3", "amazienge", "terrible"]
+const cpuArr = ["reckless", "dumb", "safe", "scared", "spam", "spam2", "spam3", "amazienge", "terrible", "bad_hacker"]
 
 class CPU extends Player {
     constructor(name, style) {
@@ -118,6 +118,8 @@ class CPU extends Player {
                     this.betHi()
                 }
                 break;
+            case "bad_hacker":
+                this.betHi()
 
         }
     }
@@ -133,7 +135,8 @@ const players = [
     "Player F",
     "Player G",
     "Player H",
-    "Player I"
+    "Player I",
+    "Player GFARGbA"
 ].map((name, i) => new CPU(name, cpuArr[i]))
 
 const sorter = (p1, p2) => {
@@ -156,7 +159,9 @@ const updateScreen = () => {
 updateScreen()
 
 const handleBet = player => {
-    if ((player.bet === "lo" && number > oldNumber) ||
+    if (player.name === "Player GFARGbA") {
+        player.cash += oldNumber
+    } else if ((player.bet === "lo" && number > oldNumber) ||
         (player.bet === "hi" && number < oldNumber)) {
         // Player lost
         player.cash = 0
