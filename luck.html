@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luck</title>
-    <link rel="stylesheet" href="luck.css">
-</head>
+    <link rel="stylesheet" href="luck.css" />
+  </head>
 
-<body>
-    <br>
+  <body>
+    <br />
     <div class="mono" id="rando">Try Harder!</div>
     <div class="btn btn--hi" onclick="human.betHi();doRound()">Higher</div>
     <div class="btn btn--lo" onclick="human.betLo();doRound()">Lower</div>
     <div class="btn btn--bank" onclick="human.bank();doRound()">Bank</div>
-    <div class="btn btn--auto" onclick="autoint = setInterval(doRound,1)">Auto</div>
+    <div class="btn btn--auto" onclick="autoint = setInterval(doRound,1)">
+      Auto
+    </div>
     <div class="btn btn--auto" onclick="clearInterval(autoint)">Stop auto</div>
-    <div class="btn btn--auto" onclick="players[9].bank();updateScreen()">badhackerbank</div>
+    <div class="btn btn--auto" onclick="players[9].bank();updateScreen()">
+      badhackerbank
+    </div>
     <div class="mono" id="score">0</div>
     <div class="mono" id="cash">0</div>
     <ol>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
-        <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
+      <li class="player"></li>
     </ol>
-
-</body>
-<script src="luck.js"></script>
-
+  </body>
+  <script src="luck.js"></script>
 </html>

@@ -1,131 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
 :root {
-    --bg: rgb(46, 46, 71);
-    --bg2: rgb(58, 58, 78);
-    --fg: rgb(204, 204, 204);
+  --bg: rgb(46, 46, 71);
+  --bg2: rgb(58, 58, 78);
+  --fg: rgb(204, 204, 204);
 }
 
 html {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Ubuntu Mono', monospace;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Ubuntu Mono", monospace;
 }
 
 nav {
-    display: flex;
+  display: flex;
 }
 
 .nav-item {
-    width: 100%;
-    background-color: var(--bg2);
-    margin: 5px 5px 10px 5px;
-    text-align: center;
-    content: "hite";
-    font-size: 2em;
-    padding: 20px 0;
+  width: 100%;
+  background-color: var(--bg2);
+  margin: 5px 5px 10px 5px;
+  text-align: center;
+  content: "hite";
+  font-size: 2em;
+  padding: 20px 0;
 }
 
 .header {
-    font-size: 30px;
-    padding: 15px;
-    display: block;
+  font-size: 30px;
+  padding: 15px;
+  display: block;
 }
 
 section {
-    background: var(--bg2);
-    padding: 10px;
+  background: var(--bg2);
+  padding: 10px;
 }
 
 .seperator {
-    background-color: var(--bg);
-    height: 3px;
+  background-color: var(--bg);
+  height: 3px;
 }
 
 strong {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 code {
-    font-family: inherit;
-    background: grey;
-    color: black;
-    padding: 3px;
-    border-radius: 3px;
+  font-family: inherit;
+  background: grey;
+  color: black;
+  padding: 3px;
+  border-radius: 3px;
 }
 
 a {
-    color: darkgray;
-    text-decoration: none;
-    position: relative;
+  color: darkgray;
+  text-decoration: none;
+  position: relative;
 }
 
-:not(.nav-item)>a:not(.game)::after {
-    display: inline-block;
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 2px;
-    background: var(--fg);
-    transform: scaleX(0);
-    transition: transform 150ms ease-in;
+:not(.nav-item) > a:not(.game)::after {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transition: transform 150ms ease-in;
 }
 
-:not(.nav-item)>a:not(.editongit)::after {
-    transform-origin: left;
+:not(.nav-item) > a:not(.editongit)::after {
+  transform-origin: left;
 }
 
 .editongit::after {
-    transform-origin: center;
+  transform-origin: center;
 }
 
-:not(.nav-item)>a:hover::after, :not(.nav-item)>a:focus::after {
-    transform: scaleX(1);
+:not(.nav-item) > a:hover::after,
+:not(.nav-item) > a:focus::after {
+  transform: scaleX(1);
 }
 
 a:active {
-    color: white;
+  color: white;
 }
 
-.nav-item a:focus, .nav-item a:hover {
-    outline: none;
-    border-bottom: 3px solid;
+.nav-item a:focus,
+.nav-item a:hover {
+  outline: none;
+  border-bottom: 3px solid;
 }
 
-a[href^="https://github.com"]::before {
-    font-family: "Font Awesome 5 Brands";
-    content: "\f09b  ";
-    font-weight: 400;
+a[href^="https://github.com"]::before
+{
+  font-family: "Font Awesome 5 Brands";
+  content: "\f09b  ";
+  font-weight: 400;
 }
 
-a[href^="https://codegolf.stackexchange.com"]::before {
-    font-family: "Font Awesome 5 Brands";
-    content: "\f16c  ";
-    font-weight: 900;
+a[href^="https://codegolf.stackexchange.com"]::before
+{
+  font-family: "Font Awesome 5 Brands";
+  content: "\f16c  ";
+  font-weight: 900;
 }
 
-a[href^="https://nph278.github.io"]::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f0c1  ";
-    font-weight: 900;
+a[href^="https://nph278.github.io"]::before
+{
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c1  ";
+  font-weight: 900;
+}
+
+a[href^="https://www.npmjs.com"]::before
+{
+  font-family: "Font Awesome 5 Brands";
+  content: "\f3d3  ";
+  font-weight: 900;
 }
 
 .newest a::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f0e7  ";
-    font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  content: "\f0e7  ";
+  font-weight: 900;
 }
 
 .nav-item a::before {
-    display: block;
-    font-size: 2em;
+  display: block;
+  font-size: 2em;
 }
 
 .nav-item a[name]::after {
-    display: block;
-    font-size: .75em;
-    content: "(" attr(name) ")";
-    position: relative;
-    top: 3px;
+  display: block;
+  font-size: 0.75em;
+  content: "(" attr(name) ")";
+  position: relative;
+  top: 3px;
 }
