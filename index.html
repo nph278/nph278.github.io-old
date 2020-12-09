@@ -123,6 +123,29 @@
         <a href="space.html" class="game">Go to space</a><br />
         <a href="luck.html" class="game">Luck</a>
       </section>
+      <br />
+
+      <section style="display: none" id="admin">
+        ADMIN:
+        <a
+          onclick="Array.from(document.querySelectorAll('section, div')).forEach(a => a.innerText='ADMIN')"
+          >BAD</a
+        >
+      </section>
     </main>
   </body>
+  <script defer>
+    (async () => {
+      const key = localStorage.getItem("nphPassKey");
+      const msgBuffer = new TextEncoder().encode(key);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray
+        .map((b) => ("00" + b.toString(16)).slice(-2))
+        .join("");
+      hashHex ===
+        "36c3fa55c508b1e9ec8c605ba0f6da840c96b62125c408673a602d8cf5e5ef66" &&
+        (document.querySelector("#admin").style.display = "block");
+    })();
+  </script>
 </html>
