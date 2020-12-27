@@ -116,6 +116,13 @@ a[href^="https://nph278.github.io"]::before
   font-weight: 900;
 }
 
+a[href^="https://pixelizer.netlify.app"]::before
+{
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c1  ";
+  font-weight: 900;
+}
+
 a[href^="https://www.npmjs.com"]::before
 {
   font-family: "Font Awesome 5 Brands";
